@@ -14,51 +14,28 @@ public class PiratenKarpen {
         System.out.println("  (DEBUG) there are " + howManyFaces + " faces");
         System.out.println("  (DEBUG) " + Arrays.toString(Faces.values()));
         System.out.println("------------------------------");
-        System.out.println("What would you like to do?");
-        System.out.println("Q: Quit");
-        System.out.println("P: Play Game");
-        String val = scanner.nextLine();
-        if (val.equals("Q")){
-            System.exit(0);
-        }
-        else if (val.equals("P")){
-            PLAY();
 
-        }
+        Players player1 = new Players();
+        Players player2 = new Players();
+        Strategy strategy1 = new Strategy();
+        double wins1 = 0;
+        double wins2 = 0;
 
-    }
-    public static void printOptions(){
-        System.out.println("What would you like to do?");
-        System.out.println("Q: Quit\t R: Reroll \t N: Cash Out/Next Turn");
-    }
-    public static void PLAY(){
-        Scanner scanner = new Scanner(System.in);
-        Boolean playing = true;
-        Player player1 = new Player();
-        player1.initalRoll();
-        while (playing){
-            printOptions();
-            String choice = scanner.nextLine();
-            if (choice.equals("Q")){
-                playing = false;
-                System.exit(0);
+        for (int i = 0; i< 42; i++){
+            while (player1.score <= 6000 && player2.score <= 6000){
+                player1.score += strategy1.playRandom(player1);
+                player2.score += strategy1.playRandom(player2);
             }
-            else if (choice.equals("N")){
-                player1.cash();
-                player1.initalRoll();
+            if (player1.score > player2.score){
+                wins1 += 1;
             }
-            else if (choice.equals("R")){
-                System.out.println("Please Input which Dice you want to reroll! Format: \"2 3 4 5\"");
-                String re = scanner.nextLine();
-                player1.reroll(re);
+            else{
+                wins2 += 1;
             }
+            player1.score = 0; // Resets back the points for next game
+            player2.score = 0;
         }
-
+        System.out.printf("%.2f%% \n",(wins1/42*100));
+        System.out.printf("%.2f%% \n",(wins2/42*100));
     }
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
-    
 }
