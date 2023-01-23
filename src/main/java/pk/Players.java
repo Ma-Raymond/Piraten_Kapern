@@ -15,25 +15,44 @@ public class Players {
         }
         return dices;
     }
+
+    static Map<Faces,Integer> counts = new HashMap<Faces,Integer>();
+    static Faces[] faceArray = Faces.values();
     public int howManySkulls(){
-        int count = 0;
-        for (int i=0; i <8; i++){
-            if (dices[i] == Faces.SKULL){
-                count += 1;
+        return getMap().get(Faces.SKULL);
+    }
+    public Map<Faces,Integer> getMap(){
+        for (Faces i : faceArray){
+            counts.put(i,0);
+        }
+        for (Faces i : dices){
+            counts.put(i,counts.getOrDefault(i,0)+1);
+        }
+        return counts;
+    }
+
+    // This getCombos will allow the user to get which
+    public Map<Faces,Boolean> getCombos(){
+        Map<Faces,Boolean> combos = new HashMap<Faces,Boolean>();
+        for (Faces i : faceArray){          // Makes a Dictionary for the combos
+            combos.put(i,false);
+        }
+        counts = getMap();
+        for (Faces i : faceArray){
+            if (i == Faces.SKULL){
+                continue;
+            }
+            if (counts.get(i) >= 3){
+                combos.put(i,true);
             }
         }
-        return count;
+        return combos;
     }
+
+    
     public int getPoints(){
             int value = 0;
-            Map<Faces,Integer> counts = new HashMap<Faces,Integer>();
-            Faces[] faceArray = Faces.values();
-            for (Faces i : faceArray){
-                counts.put(i,0);
-            }
-            for (Faces i : dices){
-                counts.put(i,counts.getOrDefault(i,0)+1);
-            }
+            counts = getMap();
             for (Faces key : faceArray){
                 if (counts.get(key) == 3){
                     value += 100;
@@ -57,6 +76,7 @@ public class Players {
                     value += counts.get(key)*100;
                 }
             }
+
             if (counts.get(Faces.SKULL) >= 3){
                 value = 0;
             }
