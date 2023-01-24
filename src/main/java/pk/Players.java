@@ -31,9 +31,9 @@ public class Players {
         return counts;
     }
 
+    static Map<Faces,Boolean> combos = new HashMap<Faces,Boolean>();
     // This getCombos will allow the user to get which
     public Map<Faces,Boolean> getCombos(){
-        Map<Faces,Boolean> combos = new HashMap<Faces,Boolean>();
         for (Faces i : faceArray){          // Makes a Dictionary for the combos
             combos.put(i,false);
         }
@@ -48,8 +48,24 @@ public class Players {
         }
         return combos;
     }
+    // This function will determine if the roll will have the extra treasure chest points
+    public boolean treasureChest(){
+        if (howManySkulls() > 0){
+            return false;
+        }
+        combos = getCombos();
+        for (Faces i : dices){
+            if (i == Faces.DIAMOND || i == Faces.GOLD || i == Faces.SKULL){
+                continue;
+            }
+            if (!combos.get(i)){
+                return false;
+            }
+        }
+        return true;
+    }
 
-    
+    // This function will get
     public int getPoints(){
             int value = 0;
             counts = getMap();
@@ -76,8 +92,10 @@ public class Players {
                     value += counts.get(key)*100;
                 }
             }
-
-            if (counts.get(Faces.SKULL) >= 3){
+            if (treasureChest()){           // Based on the rules will recieve 500
+                value += 500;
+            }
+            if (counts.get(Faces.SKULL) >= 3){          // Safety net at the end
                 value = 0;
             }
             return value;

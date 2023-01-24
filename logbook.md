@@ -13,3 +13,15 @@
 - Made Players class
 - Got percentage of each win
 - Completed Step 2
+
+# January 22
+- Completed Step 3 
+- Made program more object oriented
+- Completed some parts of step 4, still need to add arguents
+
+# January 23
+- Completed Step 4
+- Updated program for rules for points
+- Implemented at least 2 dice rule when rerolling
+- Implemented Unique Strategy to maximize combos and considers unique trade-offs
+
