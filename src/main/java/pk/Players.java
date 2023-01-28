@@ -6,9 +6,14 @@ import java.util.Map;
 
 public class Players {
 
+
+    // This is the score of the Player, I will keep it updated everytime.
     public int score = 0;
     Faces[] dices = new Faces[8];
     Dice die = new Dice(); // Just used one dice to save memory and storage
+
+
+    // This rolls 8 Dices, this is the initall roll.
     public Faces[] roll8(){
         for (int i=0; i < 8; i++){
             dices[i] = die.roll();
@@ -18,6 +23,8 @@ public class Players {
 
     static Map<Faces,Integer> counts = new HashMap<Faces,Integer>();
     static Faces[] faceArray = Faces.values();
+
+    // This function will return how many skulls are in the
     public int howManySkulls(){
         return getMap().get(Faces.SKULL);
     }
@@ -30,7 +37,10 @@ public class Players {
         }
         return counts;
     }
+    // CARD SYSTEM ------------------------------------------
+    CardDrawer drawer = new CardDrawer();
 
+    // COMBOS SYSTEM ------------------------------------------
     static Map<Faces,Boolean> combos = new HashMap<Faces,Boolean>();
     // This getCombos will allow the user to get which
     public Map<Faces,Boolean> getCombos(){
@@ -49,6 +59,7 @@ public class Players {
         return combos;
     }
     // This function will determine if the roll will have the extra treasure chest points
+    // TREASURE CHEST SYSTEM ------------------------------------------
     public boolean treasureChest(){
         if (howManySkulls() > 0){
             return false;
@@ -65,7 +76,7 @@ public class Players {
         return true;
     }
 
-    // This function will get
+    // POINTS SYSTEM ------------------------------------------
     public int getPoints(){
             int value = 0;
             counts = getMap();
@@ -100,4 +111,5 @@ public class Players {
             }
             return value;
     }
+
 }

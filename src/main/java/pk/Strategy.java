@@ -5,6 +5,8 @@ import java.util.*;
 public class Strategy {
     static Dice die = new Dice();
 
+    // This is the overarching play Style
+
     public static int playStyle(String style, Players player){
         if (style.equals("random")){
             return playRandom(player);
@@ -14,7 +16,6 @@ public class Strategy {
         }
         else{
             System.out.println("Bad input"); // ----- need to update for logging.
-
             return 0;
         }
     }
@@ -70,7 +71,7 @@ public class Strategy {
                 break;
             }
             rolls = arrlistObj.toArray(rolls);          // Assigns the rolls back as an Array instead of an ArrayList
-            if (rolls.length < 2){                      // If there is just one dice that is not a combo, and nothing else, I determined the current roll is the maximum amount of rolls.
+            if (rolls.length < 2){                      // If there is just one dice that is not a combo, and nothing else, I determined the current roll is the maximum amount of combos and i exit.
                 maxCombos = false;
             }
             else{
@@ -82,5 +83,4 @@ public class Strategy {
         }
         return player.getPoints();
     }
-
 }

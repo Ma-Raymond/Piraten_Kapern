@@ -11,6 +11,7 @@
     * `mvn compile`
   * To run the project in development mode:
     * `mvn -q exec:java` (here, `-q` tells maven to be _quiet_)
+    * `mvn -q exec:java -Dexec.args="combo random trace"` also works with arguments
   * To package the project as a turn-key artefact:
     * `mvn package`
   * To run the packaged delivery:
@@ -27,13 +28,17 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 
 ### Backlog 
 
-| MVP? | Id  | Feature  | Status  |  Started  | Delivered |
-| :-:  |:-:  |---       | :-:     | :-:       | :-:       |
-| x   | F01 | Roll a dice |  S | 01/01/23 | 01/16/2023 |
-| x   | F02 | Roll eight dices  |  B (F01) |  01/18/2023 | 01/19/2023 |
-| x   | F03 | Select how many games as command-line arg.  |  P  |   |
-| x   | F04 | end of game with three cranes | P | |
-| x   | F05 | Player keeping random dice at their turn | B (F02) | | 
-| x   | F06 | Score points: 3-of-a-kind | B (F04) | | 
-| ... | ... | ... |
+| MVP? | Id  |                 Feature                  | Status |  Started  |  Delivered  |
+|:----:|:---:|:----------------------------------------:|:------:| :---:       |:-----------:|
+|  x   | F01 |               Roll a dice                |   D    | 01/01/23 | 01/16/2023  |
+|  x   | F02 |             Roll eight dices             |   D    |  01/18/2023 | 01/19/2023  |
+|  x   | F03 |      Select type of player in args       |   D    |   | 01/22/2023  |
+|  x   | F04 |      end of game with three cranes       |   D    | | 01/22/2023  | 
+|  x   | F05 | Player keeping random dice at their turn |   D    | | 01/22/2023  |
+|  x   | F06 |        Score points: 3-of-a-kind         |   D    | | 01/22/2023  | 
+|  x   | F07 |          Treasure Chest Points           |   D    | |
+| ...  | F08 |             At least 2 rolls             |   D    |
+| ...  | F09 |      Start with Cards and add value      |   P    |
+| ...  | F10 |            Make a trace mode             |   D    |
+| ...  | ... |                   ...                    |        |
 

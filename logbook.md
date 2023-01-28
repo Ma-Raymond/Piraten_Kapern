@@ -25,3 +25,14 @@
 - Implemented at least 2 dice rule when rerolling
 - Implemented Unique Strategy to maximize combos and considers unique trade-offs
 
+# January 26
+- Working on trace mode
+- Having some issues with the logger, need to fix
+- Implemented bug with both ties.
+
+# January 27
+- Finished trace made
+- Working on code for cards, proven to be a bit difficult
+- Working to make objected oriented interfaces and abstract classes
+- Created CardDrawer Class
+- 
