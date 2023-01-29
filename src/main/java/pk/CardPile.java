@@ -17,12 +17,11 @@ public class CardPile implements Source{
     public CardPile(){
         // Setting the Original Logger to be with Level type Error
         // This will not show debug parts, only the major errors, in which I would want to know if there's major erorrs.
-        Logger loggerConfig = LogManager.getRootLogger();
-        Configurator.setAllLevels(loggerConfig.getName(), Level.getLevel("ALL"));
-
         // CARD VARIABLES ---------
         // Set of Rules of Cards in the Deck put nicey in a hashmap to change with ease
-        hash_map.put(Cards.SEABATTLE,6);
+        hash_map.put(Cards.SEABATTLE2,2);
+        hash_map.put(Cards.SEABATTLE3,2);
+        hash_map.put(Cards.SEABATTLE4,2);
         hash_map.put(Cards.NOP,29);
         // ------------------------
 

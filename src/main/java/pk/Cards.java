@@ -1,5 +1,5 @@
 package pk;
 
 public enum Cards {
-    SEABATTLE,NOP
+    SEABATTLE2,SEABATTLE3,SEABATTLE4,NOP
 }

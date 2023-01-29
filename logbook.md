@@ -14,25 +14,29 @@
 - Got percentage of each win
 - Completed Step 2
 
-# January 22
+# January 20
 - Completed Step 3 
 - Made program more object oriented
 - Completed some parts of step 4, still need to add arguents
 
-# January 23
+# January 22
 - Completed Step 4
 - Updated program for rules for points
 - Implemented at least 2 dice rule when rerolling
 - Implemented Unique Strategy to maximize combos and considers unique trade-offs
 
-# January 26
+# January 24
 - Working on trace mode
 - Having some issues with the logger, need to fix
 - Implemented bug with both ties.
 
-# January 27
+# January 25
 - Finished trace made
 - Working on code for cards, proven to be a bit difficult
 - Working to make objected oriented interfaces and abstract classes
 - Created CardDrawer Class
-- 
+- Created the Strategy for the Sea Battles
+- Successfully implemented the point systems with sea battles
+- draw() function is integrated with the CardPile
+- Completed Step 5
+

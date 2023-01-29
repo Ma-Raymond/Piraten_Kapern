@@ -1,18 +1,25 @@
 package pk;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.*;
 
 public class Strategy {
     static Dice die = new Dice();
 
-    // This is the overarching play Style
+    private static final Logger logger = LogManager.getLogger(Strategy.class);
 
-    public static int playStyle(String style, Players player){
+    // This is the overarching play Style
+    public static int playStyle(String style, Players player,Cards card){
         if (style.equals("random")){
             return playRandom(player);
         }
         else if (style.equals("combo")){
             return playCombos(player);
+        }
+        else if (style.equals("SEABATTLE")){
+            return playSeaBattles(player,card);
         }
         else{
             System.out.println("Bad input"); // ----- need to update for logging.
@@ -67,9 +74,6 @@ public class Strategy {
                     arrlistObj.add(i);                  // we dont want to roll immedaitely, I need to determine if its even worth it. I save the index
                 }
             }
-            if (player.howManySkulls() >= 3){             // Check how many skulls because at 3 its automatically out
-                break;
-            }
             rolls = arrlistObj.toArray(rolls);          // Assigns the rolls back as an Array instead of an ArrayList
             if (rolls.length < 2){                      // If there is just one dice that is not a combo, and nothing else, I determined the current roll is the maximum amount of combos and i exit.
                 maxCombos = false;
@@ -80,7 +84,40 @@ public class Strategy {
                 }
                 maxCombos = !holder;
             }
+            // Check how many skulls. We want to automatically determine if we can continue
+            if (player.howManySkulls() >= 3){
+                break;
+            }
         }
         return player.getPoints();
     }
+
+    // Here is the Sea Battles Strategy we roll to get the correct amount of Sabors
+    public static int playSeaBattles(Players player,Cards card){
+        player.roll8();
+        Map<Cards,Integer[]> saborMap = Map.of(
+                Cards.SEABATTLE2,new Integer[] {2,300},
+                Cards.SEABATTLE3,new Integer[] {3,500},
+                Cards.SEABATTLE4,new Integer[] {4,1000});
+
+        int saborsNeeded = saborMap.get(card)[0];
+
+        while (player.getMap().get(Faces.SABER) < saborsNeeded){
+            // Base Case if we hit 3 skulls
+            if (player.howManySkulls() >= 3){
+                // "If you fail, however, your dice are ignored and you lose the indicated bonus points."
+                return -saborMap.get(card)[1];
+            }
+            for (int i=0; i< 8; i++){
+                // We dont want to roll current sabors and we cant roll skulls regardless
+                if (player.dices[i] == Faces.SKULL || player.dices[i] == Faces.SABER){
+                    continue;
+                }
+                player.dices[i] = die.roll(); // Forced roll until we get sabors because we dont want to lose points
+            }
+        }
+        // Get the original winnings + bonus!
+        return player.getPoints() + saborMap.get(card)[1];
+    }
+
 }

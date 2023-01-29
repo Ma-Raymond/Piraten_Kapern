@@ -12,7 +12,6 @@ public class Players {
     Faces[] dices = new Faces[8];
     Dice die = new Dice(); // Just used one dice to save memory and storage
 
-
     // This rolls 8 Dices, this is the initall roll.
     public Faces[] roll8(){
         for (int i=0; i < 8; i++){
@@ -37,9 +36,6 @@ public class Players {
         }
         return counts;
     }
-    // CARD SYSTEM ------------------------------------------
-    CardDrawer drawer = new CardDrawer();
-
     // COMBOS SYSTEM ------------------------------------------
     static Map<Faces,Boolean> combos = new HashMap<Faces,Boolean>();
     // This getCombos will allow the user to get which
@@ -64,6 +60,7 @@ public class Players {
         if (howManySkulls() > 0){
             return false;
         }
+        // If there isn't a combo, return false immediately
         combos = getCombos();
         for (Faces i : dices){
             if (i == Faces.DIAMOND || i == Faces.GOLD || i == Faces.SKULL){
@@ -80,6 +77,7 @@ public class Players {
     public int getPoints(){
             int value = 0;
             counts = getMap();
+
             for (Faces key : faceArray){
                 if (counts.get(key) == 3){
                     value += 100;
@@ -111,5 +109,9 @@ public class Players {
             }
             return value;
     }
+
+    // Card System ------------------------------------
+    public Cards card;
+
 
 }
