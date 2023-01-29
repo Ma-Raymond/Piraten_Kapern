@@ -15,14 +15,13 @@ public class CardPile implements Source{
     HashMap<Cards, Integer> hash_map = new HashMap<Cards, Integer>(); // Organized and Accessible hash map of card rules
 
     public CardPile(){
-        // Setting the Original Logger to be with Level type Error
-        // This will not show debug parts, only the major errors, in which I would want to know if there's major erorrs.
         // CARD VARIABLES ---------
         // Set of Rules of Cards in the Deck put nicey in a hashmap to change with ease
         hash_map.put(Cards.SEABATTLE2,2);
         hash_map.put(Cards.SEABATTLE3,2);
         hash_map.put(Cards.SEABATTLE4,2);
-        hash_map.put(Cards.NOP,29);
+        hash_map.put(Cards.MONKEYBUS,4);
+        hash_map.put(Cards.NOP,25);
         // ------------------------
 
         // Shuffle to get a new deck of cards
@@ -35,14 +34,16 @@ public class CardPile implements Source{
     }
     // Draw function to get a card. if there is nothing left in the deck, it will shuffle the cards
     public Cards draw(){
+        // If there's no cards left in the deck, shuffle for a new deck and continue!
         if (isEmpty()){
             shuffle();
         }
+        // Draw a card randomly from our pile
         int randomIndexToTake = rand.nextInt(pile.size());
         Cards item = pile.get(randomIndexToTake);
         pile.remove(randomIndexToTake);
 
-        // Traces to check if it was removed
+        // Traces to check if it was removed or not
         logger.trace("Drawed: "+item+" at index"+randomIndexToTake);
         logger.trace("After Draw:"+Arrays.toString(pile.toArray()));
         return item;

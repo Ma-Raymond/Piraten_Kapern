@@ -3,7 +3,6 @@ package pk;
 
 import java.util.*;
 
-
 // Abstract Class as a drawer
 abstract class Drawer{
     public abstract Object draw();

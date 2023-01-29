@@ -39,4 +39,14 @@
 - Successfully implemented the point systems with sea battles
 - draw() function is integrated with the CardPile
 - Completed Step 5
+- Cleaning up Code
+
+# January 26
+- Completed Step 6
+- Cleaned up code, fixed my technical debt
+- Encapsulated Code to PLAY class
+- Created Monkey Business Card Functioning and can be used by user
+- Implemented Monkey Business Card with implemented point system
+- Fixed technical debt with combo strategy and random strategy
+- Fixed technical debt in Player Class
 
