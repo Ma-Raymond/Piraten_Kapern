@@ -1,4 +1,5 @@
 # Piraten Karpen
+![image](https://github.com/Ma-Raymond/Piraten_Kapern/assets/107081345/bbb1028e-bb1c-4d39-95a2-9578ff88c16e)
 
 ## Build and Execution
 
