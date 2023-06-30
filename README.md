@@ -1,7 +1,4 @@
-# A1 - Piraten Karpen
-
-  * Author: Raymond Ma
-  * Email: mar47@mcmaster.ca
+# Piraten Karpen
 
 ## Build and Execution
 
@@ -24,7 +21,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
  * Status: 
    * Pending (P), Started (S), Blocked (B), Done (D)
  * Definition of Done (DoD):
-   * < Your DoD goes here >
+   * Runs with no error
 
 ### Backlog 
 
